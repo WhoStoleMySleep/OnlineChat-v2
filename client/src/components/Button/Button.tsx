@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button as BaseButton } from 'antd'
 import classNames from 'classnames';
-import './Button.scss';
+import styles from './button.module.scss';
 import { SizeType } from 'antd/lib/config-provider/SizeContext';
 
 function Button(props:
@@ -20,8 +20,8 @@ function Button(props:
   }) {
   const { className } = props
 
-  return <BaseButton {...props} className={classNames('button', className, {
-    'button_large': props.size === 'large'
+  return <BaseButton {...props} className={classNames(className, {
+    [styles['button_large']]: props.size === 'large'
   })} />
 }
 
