@@ -1,0 +1,37 @@
+.button {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  width: 100%;
+}
+
+.auth__register-link {
+  text-align: center;
+  display: block;
+  color: #adadad;
+  letter-spacing: 0.1px;
+  font-size: 16px;
+}
+
+.auth__headed {
+  text-align: center;
+  margin-bottom: 50px;
+  
+  h2 {
+    font-size: 28px;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.1px;
+    opacity: 0.5;
+  }
+}
+
+.white-block {
+  max-width: 430px;
+  width: 100%;
+}
