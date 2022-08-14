@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginForm from '../modules/LoginForm/components/LoginForm';
-import styles from './auth.module.scss'
+import styles from './styles/auth.module.scss'
 
 function Auth() {
   return (
