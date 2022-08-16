@@ -2,8 +2,8 @@ import React from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Form, Input } from 'antd';
 import styles from './login-form.module.scss';
-import Button from '../../../components/Button/Button';
-import WhiteBlock from '../../../components/WhiteBlock/WhiteBlock';
+import Button from '../../components/Button/Button';
+import WhiteBlock from '../../components/WhiteBlock/WhiteBlock';
 import Link from 'next/link';
 
 function LoginForm() {
