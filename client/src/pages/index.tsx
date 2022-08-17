@@ -1,10 +1,10 @@
-// import './Index.scss';
+import { useRouter } from 'next/router'
 
 function Index() {
-  return (
-    <>
-    </>
-  );
+  const router = useRouter()
+  if (typeof window !== 'undefined') {
+    router.push('/auth')
+  }
 }
 
-export default Index;
+export default Index
