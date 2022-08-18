@@ -6,8 +6,15 @@ import WhiteBlock from '../../../components/WhiteBlock/WhiteBlock';
 import Link from 'next/link';
 import styles from './register-form.module.scss';
 
-function RegisterForm() {
-  const success = false;
+const success = false;
+
+function RegisterForm(props: any) {
+  const {
+    touched,  
+    errors,
+    handleChange,
+    handleBlur,
+  } = props
   
   return (
     <>
@@ -18,54 +25,82 @@ function RegisterForm() {
       <WhiteBlock className={styles['white-block']}>
         {!success ? (
           <Form
-            name="normal_login"
             className="login-form"
-            initialValues={{ remember: true }}
           >
             <Form.Item
               name="email"
-              rules={[{ required: true, message: 'Please input your Email!' }]}
+              rules={[{ required: true, message: 'Пожалуйста введите ваш E-mail!' }]}
               hasFeedback
-              validateStatus="success"
+              validateStatus={
+                !touched.email ? '' : errors.email ? 'error' : 'success'
+              }
+              help={!touched.email ? '' : errors.email}
             >
               <Input
+                id='email'
                 prefix={<MailOutlined
                   className="site-form-item-icon" />}
-                placeholder="Email"
+                placeholder="E-mail"
                 size='large'
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Form.Item>
             <Form.Item
               name="username"
-              rules={[{ required: true, message: 'Please input your Username!' }]}
+              rules={[{ required: true, message: 'Пожалуйста введите ваше имя!' }]}
+              hasFeedback
+              validateStatus={
+                !touched.name ? '' : errors.name ? 'error' : 'success'
+              }
+              help={!touched.name ? '' : errors.name}
             >
               <Input
+                id='name'
                 prefix={<UserOutlined
                   className="site-form-item-icon" />}
                 placeholder="Ваше имя"
                 size='large'
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Form.Item>
             <Form.Item
               name="password"
-              rules={[{ required: true, message: 'Please input your Password!' }]}
+              rules={[{ required: true, message: 'Пожалуйста введите ваш пароль!' }]}
+              hasFeedback
+              validateStatus={
+                !touched.password ? '' : errors.password ? 'error' : 'success'
+              }
+              help={!touched.password ? '' : errors.password}
             >
               <Input
+                id='password'
                 prefix={<LockOutlined className="site-form-item-icon" />}
                 type="password"
                 size='large'
                 placeholder="Пароль"
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Form.Item>
             <Form.Item
               name="re-write-password"
-              rules={[{ required: true, message: 'Please input your Password!' }]}
+              rules={[{ required: true, message: 'Пожалуйста повторите ваш пароль!' }]}
+              hasFeedback
+              validateStatus={
+                !touched.reWritePassword ? '' : errors.reWritePassword ? 'error' : 'success'
+              }
+              help={!touched.reWritePassword ? '' : errors.reWritePassword}
             >
               <Input
+                id='reWritePassword'
                 prefix={<LockOutlined className="site-form-item-icon" />}
                 type="password"
                 size='large'
                 placeholder="Повторите пароль"
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </Form.Item>
             <Form.Item>

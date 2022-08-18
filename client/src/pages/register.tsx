@@ -1,5 +1,5 @@
 import React from 'react';
-import RegisterForm from '../modules/RegisterForm/components/RegisterForm';
+import RegisterForm from '../modules/RegisterForm/containers/RegisterForm';
 import styles from './styles/register.module.scss'
 
 function register() {
