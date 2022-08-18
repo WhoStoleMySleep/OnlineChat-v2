@@ -9,33 +9,81 @@ import noReadedIco from '../../assets/images/no-readed.png'
 function Message(props:
   {
     avatar: string,
-    user: {name: string, fullName: string},
-    text: string,
-    date: string,
+    text?: string,
+    date?: string,
     isMe?: boolean,
-    isReaded?: boolean
+    isReaded?: boolean,
+    attachments?: { filename: string; url: string; }[],
+    isTyping?: boolean
   }): JSX.Element {
-  const { avatar, text, date, user, isMe, isReaded } = props
+  const {
+    avatar,
+    text,
+    date,
+    isMe,
+    isReaded,
+    attachments,
+    isTyping
+  } = props
 
   return (
-    <div className={classNames(styles.message, {[styles['message_is-me']]: isMe})}>
+    <div className={
+      classNames(
+        styles.message,
+        {
+          [styles['message_is-me']]: isMe,
+          [styles['message_is-typing']]: isTyping,
+          [styles['message_single-image']]: attachments?.length === 1
+        })
+    }>
       <div className={styles['message__content']}>
-        {isMe && isReaded && (
-          <img
-            className={styles['message__icon-readed']}
-            src={readedIco.src} alt="Checked icon"
-          />
-        )}
         <div className={styles['message__avatar']}>
-          <img src={avatar} alt={`Avatar ${user.fullName}`} />
+          <img src={avatar} alt='Avatar' />
         </div>
         <div className={styles['message__info']}>
-          <div className={styles['message__bubble']}>
-            <p className={styles['message__text']}>{text}</p>
+          {attachments && 
+            <div className={styles['message__attachments']}>
+              {
+                attachments.map(item => (
+                  <div className={styles['message__attachments-item']}>
+                    <img src={item.url} alt={item.filename} />
+                  </div>
+                ))
+              }
+            </div>
+          }
+          <div>
+            {(text || isTyping) &&
+              <div className={styles['message__bubble']}>
+                {text && 
+                  <p className={styles['message__text']}>{text}</p>
+                }
+                {isTyping && 
+                  <div className={styles['message__typing']}>
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                }
+                {isMe && (isReaded ? (
+                  <img
+                    className={styles['message__icon-readed']}
+                    src={readedIco.src} alt="Readed icon"
+                  />
+                ) : (
+                  <img
+                    className={styles['message__icon-no-readed']}
+                    src={noReadedIco.src} alt="No readed icon"
+                  />
+                ))}
+              </div>
+            }
+            {date &&
+              <span className={styles['message__date']}>
+                {formatDistanceToNow(new Date(date), { addSuffix: true, locale: ruLocale })}
+              </span>
+            }
           </div>
-          <span className={styles['message__date']}>
-            {formatDistanceToNow(new Date(date), { addSuffix: true, locale: ruLocale })}
-          </span>
         </div>
       </div>
     </div>

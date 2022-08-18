@@ -10,11 +10,39 @@
     position: relative;
   }
 
-  &__icon-readed {
-    width: 15px;
+  &__icon-readed,
+  &__icon-no-readed {
+    width: 17px;
+    height: 9.53px;
     position: absolute;
-    bottom: 20px;
+    bottom: 0;
     left: -25px;
+  }
+
+  &__icon-no-readed {
+    width: 12.04px;
+    left: -20.04px; 
+  }
+
+  &__attachments {
+    display: flex;
+    max-width: 205px;
+    max-height: 205px;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+
+  &__attachments-item {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+
+    img {
+      pointer-events: none;
+    }
   }
 
   &__avatar {
@@ -36,11 +64,80 @@
     border-radius: 12px 12px 12px 0px;
     padding: 15px;
     margin-bottom: 8px;
+    width: fit-content;
+    margin-right: auto;
+    position: relative;
   }
 
   &__text {
     color: #fff;
     line-height: 20px;
+  }
+
+  &_single-image {
+    #{$self}__attachments-item {
+      width: 150px;
+      height: 150px;
+      
+      img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  }
+
+  &_is-typing {
+    #{$self}__avatar {
+      img {
+        margin-bottom: 9px;
+      }
+    }
+
+    #{$self}__bubble {
+      background: $message-typing-blue;
+      box-shadow: 0px 5px 5px rgba(54, 116, 255, 0.04);
+      padding: 15px 20px;
+    }
+
+    #{$self}__typing {
+      span {
+        animation: mercuryTypingAnimation 1s infinite ease-in-out;
+        background-color: $message-typing-circle;
+        border-radius: 50%;
+        height: 8px;
+        margin-right: 8px;
+        width: 8px;
+        display: inline-block;
+  
+        &:nth-child(1) {
+          animation-delay: 200ms;
+        }
+  
+        &:nth-child(2) {
+          animation-delay: 300ms;
+        }
+  
+        &:nth-child(3) {
+          animation-delay: 400ms;
+          margin-right: 0;
+        }
+  
+        @keyframes mercuryTypingAnimation {
+          0% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          28% {
+            opacity: 0.5;
+            transform: scale(1.1);
+          }
+          44% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      }
+    }
   }
 
   &__date {
@@ -55,6 +152,10 @@
     #{$self}__content {
       margin-bottom: 15px;
       flex-direction: row-reverse;
+    }
+
+    #{$self}__attachments {
+      margin-left: auto;
     }
   
     #{$self}__avatar {
@@ -73,6 +174,8 @@
       border: 1px solid #ececec;
       box-shadow: 0px 4px 4px rgba(0,0,0, 0.022);
       border-radius: 12px 12px 0px 12px;
+      margin-left: auto;
+      margin-right: 0;
   
       #{$self}__text {
         color: $black;
