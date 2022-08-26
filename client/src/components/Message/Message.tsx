@@ -1,11 +1,8 @@
-import React from 'react';
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
-import ReadedIcon from '../ReadedIcon/ReadedIcon';
-import styles from './message.module.scss';
-import ruLocale from 'date-fns/locale/ru';
 import classNames from 'classnames';
-import readedIco from '../../assets/images/readed.png'
-import noReadedIco from '../../assets/images/no-readed.png'
+import React from 'react';
+import ReadedIcon from '../ReadedIcon/ReadedIcon';
+import Time from '../Time/Time';
+import styles from './message.module.scss';
 
 function Message(props:
   {
@@ -80,7 +77,7 @@ function Message(props:
             }
             {date &&
               <span className={styles['message__date']}>
-                {formatDistanceToNow(new Date(date), { addSuffix: true, locale: ruLocale })}
+                <Time date={date} />
               </span>
             }
           </div>
