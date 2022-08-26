@@ -1,23 +1,83 @@
-// import './Index.scss';
-import Message from '../components/Message/Message';
+import styles from './styles/home.module.scss';
+import DialogsList from '../components/DialogsList/DialogsList';
 
 function Home() {
   return (
-    <section className='home'>
-      <Message
+    <section className={styles['home']}>
+      <DialogsList
+        items={[
+          {
+            user: {
+              avatar: 'https://ru-static.z-dn.net/files/d3b/f593eaec9976bb45317692d04609f94f.jpg',
+              fullname: 'Фёдор Достоевский',
+              _id: Math.random()
+            },
+            message: {
+              text: 'Мы все свидетильствуем Вам глубочайшее наше почтение и целуем Ваши ручки, дражайший папенька: Михайла, Федор, Варвара и Андрюша',
+              created_at: 'Tue Aug 21 2022 16:04:27',
+              unreaded: 0,
+            },
+            userId: 1,
+          },
+          {
+            user: {
+              avatar: null,
+              fullname: 'Фёдор Достоевский',
+              _id: Math.random()
+            },
+            message: {
+              text: 'Мы все свидетильствуем Вам глубочайшее наше почтение и целуем Ваши ручки, дражайший папенька: Михайла, Федор, Варвара и Андрюша',
+              created_at: 'Tue Aug 21 2022 16:04:27',
+              unreaded: 0,
+            },
+            userId: 1,
+          }
+      ]} />
+
+      {/* <Message
         avatar="https://ru-static.z-dn.net/files/d3b/f593eaec9976bb45317692d04609f94f.jpg"
-        user={{ name: 'Степан', fullName: 'Степаныч' }}
         text="Hello Hello Hello"
         date="Mon Aug 15 2022 17:47:01"
       />
       <Message
         avatar="https://ru-static.z-dn.net/files/d5d/f71519847c439d7a1f96f9f9908ccaab.jpg"
-        user={{ name: 'Владимир', fullName: 'Владимирович' }}
         text="Hello Hello Hello"
         date="Mon Aug 15 2022 17:50:01"
+        attachments={[
+          {
+            filename: 'image.jpg',
+            url: 'https://source.unsplash.com/random/100x100/?random=1?nature,water'
+          },
+          {
+            filename: 'image.jpg',
+            url: 'https://source.unsplash.com/random/100x100/?random=2?nature,water'
+          },
+          {
+            filename: 'image.jpg',
+            url: 'https://source.unsplash.com/random/100x100/?random=3?nature,water'
+          },
+          {
+            filename: 'image.jpg',
+            url: 'https://source.unsplash.com/random/100x100/?random=4?nature,water'
+          }
+        ]}
         isMe={true}
         isReaded={true}
       />
+      <Message
+        avatar="https://ru-static.z-dn.net/files/d3b/f593eaec9976bb45317692d04609f94f.jpg"
+        date="Mon Aug 15 2022 17:50:01"
+        attachments={[
+          {
+            filename: 'image.jpg',
+            url: 'https://source.unsplash.com/random/100x100/?random=4?nature,water'
+          }
+        ]}
+      />
+      <Message
+        avatar="https://ru-static.z-dn.net/files/d3b/f593eaec9976bb45317692d04609f94f.jpg"
+        isTyping
+      /> */}
     </section>
   );
 }
