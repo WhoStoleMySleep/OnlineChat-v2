@@ -1,5 +1,6 @@
 import React from 'react';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import ReadedIcon from '../ReadedIcon/ReadedIcon';
 import styles from './message.module.scss';
 import ruLocale from 'date-fns/locale/ru';
 import classNames from 'classnames';
@@ -65,17 +66,16 @@ function Message(props:
                     <span />
                   </div>
                 }
-                {isMe && (isReaded ? (
-                  <img
-                    className={styles['message__icon-readed']}
-                    src={readedIco.src} alt="Readed icon"
-                  />
-                ) : (
-                  <img
-                    className={styles['message__icon-no-readed']}
-                    src={noReadedIco.src} alt="No readed icon"
-                  />
-                ))}
+                <ReadedIcon
+                  isMe={isMe}
+                  isReaded={isReaded}
+                  className={
+                    classNames({
+                      [styles['message__readed']]: isReaded,
+                      [styles['message__readed_no']]: !isReaded,
+                    })
+                  }
+                />
               </div>
             }
             {date &&
