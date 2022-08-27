@@ -1,20 +1,21 @@
-import styles from './styles/home.module.scss';
-import DialogsList from '../components/DialogsList/DialogsList';
+import styles from "./styles/home.module.scss";
+import DialogsList from "../components/DialogsList/DialogsList";
 
 function Home() {
   return (
-    <section className={styles['home']}>
+    <section className={styles["home"]}>
       <DialogsList
         items={[
           {
             user: {
-              avatar: 'https://ru-static.z-dn.net/files/d3b/f593eaec9976bb45317692d04609f94f.jpg',
-              fullname: 'Фёдор Достоевский',
-              _id: Math.random()
+              avatar:
+                "https://ru-static.z-dn.net/files/d3b/f593eaec9976bb45317692d04609f94f.jpg",
+              fullname: "Фёдор Достоевский",
+              _id: Math.random(),
             },
             message: {
-              text: 'Мы все свидетильствуем Вам глубочайшее наше почтение и целуем Ваши ручки, дражайший папенька: Михайла, Федор, Варвара и Андрюша',
-              created_at: 'Tue Aug 21 2022 16:04:27',
+              text: "Мы все свидетильствуем Вам глубочайшее наше почтение и целуем Ваши ручки, дражайший папенька: Михайла, Федор, Варвара и Андрюша",
+              created_at: "Tue Aug 21 2022 16:04:27",
               unreaded: 0,
             },
             userId: 1,
@@ -22,17 +23,18 @@ function Home() {
           {
             user: {
               avatar: null,
-              fullname: 'Фёдор Достоевский',
-              _id: Math.random()
+              fullname: "Фёдор Достоевский",
+              _id: Math.random(),
             },
             message: {
-              text: 'Мы все свидетильствуем Вам глубочайшее наше почтение и целуем Ваши ручки, дражайший папенька: Михайла, Федор, Варвара и Андрюша',
-              created_at: 'Tue Aug 21 2022 16:04:27',
+              text: "Мы все свидетильствуем Вам глубочайшее наше почтение и целуем Ваши ручки, дражайший папенька: Михайла, Федор, Варвара и Андрюша",
+              created_at: "Tue Aug 21 2022 16:04:27",
               unreaded: 0,
             },
             userId: 1,
-          }
-      ]} />
+          },
+        ]}
+      />
 
       {/* <Message
         avatar="https://ru-static.z-dn.net/files/d3b/f593eaec9976bb45317692d04609f94f.jpg"
