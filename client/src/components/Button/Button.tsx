@@ -9,12 +9,12 @@ function Button(props:
     children: string,
     className?: string,
     type?:
-    "link"
-    | "text"
-    | "ghost"
-    | "default"
-    | "primary"
-    | "dashed"
+    'link'
+    | 'text'
+    | 'ghost'
+    | 'default'
+    | 'primary'
+    | 'dashed'
     | undefined,
     size?: SizeType
   }) {
