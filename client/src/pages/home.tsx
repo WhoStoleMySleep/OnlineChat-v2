@@ -1,21 +1,22 @@
-import styles from "./styles/home.module.scss";
-import DialogsList from "../components/DialogsList/DialogsList";
+import styles from './styles/home.module.scss';
+import DialogsList from '../components/DialogsList/DialogsList';
+import Message from '../components/Message/Message';
 
 function Home() {
   return (
-    <section className={styles["home"]}>
+    <section className={styles['home']}>
       <DialogsList
         items={[
           {
             user: {
               avatar:
-                "https://ru-static.z-dn.net/files/d3b/f593eaec9976bb45317692d04609f94f.jpg",
-              fullname: "Фёдор Достоевский",
+                'https://ru-static.z-dn.net/files/d3b/f593eaec9976bb45317692d04609f94f.jpg',
+              fullname: 'Фёдор Достоевский',
               _id: Math.random(),
             },
             message: {
-              text: "Мы все свидетильствуем Вам глубочайшее наше почтение и целуем Ваши ручки, дражайший папенька: Михайла, Федор, Варвара и Андрюша",
-              created_at: "Tue Aug 21 2022 16:04:27",
+              text: 'Мы все свидетильствуем Вам глубочайшее наше почтение и целуем Ваши ручки, дражайший папенька: Михайла, Федор, Варвара и Андрюша',
+              created_at: 'Tue Aug 21 2022 16:04:27',
               unreaded: 0,
             },
             userId: 1,
@@ -23,12 +24,12 @@ function Home() {
           {
             user: {
               avatar: null,
-              fullname: "Фёдор Достоевский",
+              fullname: 'Фёдор Достоевский',
               _id: Math.random(),
             },
             message: {
-              text: "Мы все свидетильствуем Вам глубочайшее наше почтение и целуем Ваши ручки, дражайший папенька: Михайла, Федор, Варвара и Андрюша",
-              created_at: "Tue Aug 21 2022 16:04:27",
+              text: 'Мы все свидетильствуем Вам глубочайшее наше почтение и целуем Ваши ручки, дражайший папенька: Михайла, Федор, Варвара и Андрюша',
+              created_at: 'Tue Aug 21 2022 16:04:27',
               unreaded: 0,
             },
             userId: 1,
@@ -36,15 +37,21 @@ function Home() {
         ]}
       />
 
+      <Message
+        avatar='https://ru-static.z-dn.net/files/d5d/f71519847c439d7a1f96f9f9908ccaab.jpg'
+        date='Mon Aug 15 2022 17:50:01'
+        audio='file:///home/whostolemysleep/%D0%97%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8/Sound_05813.mp3'
+      />
+
       {/* <Message
-        avatar="https://ru-static.z-dn.net/files/d3b/f593eaec9976bb45317692d04609f94f.jpg"
-        text="Hello Hello Hello"
-        date="Mon Aug 15 2022 17:47:01"
+        avatar='https://ru-static.z-dn.net/files/d3b/f593eaec9976bb45317692d04609f94f.jpg'
+        text='Hello Hello Hello'
+        date='Mon Aug 15 2022 17:47:01'
       />
       <Message
-        avatar="https://ru-static.z-dn.net/files/d5d/f71519847c439d7a1f96f9f9908ccaab.jpg"
-        text="Hello Hello Hello"
-        date="Mon Aug 15 2022 17:50:01"
+        avatar='https://ru-static.z-dn.net/files/d5d/f71519847c439d7a1f96f9f9908ccaab.jpg'
+        text='Hello Hello Hello'
+        date='Mon Aug 15 2022 17:50:01'
         attachments={[
           {
             filename: 'image.jpg',
@@ -67,8 +74,8 @@ function Home() {
         isReaded={true}
       />
       <Message
-        avatar="https://ru-static.z-dn.net/files/d3b/f593eaec9976bb45317692d04609f94f.jpg"
-        date="Mon Aug 15 2022 17:50:01"
+        avatar='https://ru-static.z-dn.net/files/d3b/f593eaec9976bb45317692d04609f94f.jpg'
+        date='Mon Aug 15 2022 17:50:01'
         attachments={[
           {
             filename: 'image.jpg',
@@ -77,7 +84,7 @@ function Home() {
         ]}
       />
       <Message
-        avatar="https://ru-static.z-dn.net/files/d3b/f593eaec9976bb45317692d04609f94f.jpg"
+        avatar='https://ru-static.z-dn.net/files/d3b/f593eaec9976bb45317692d04609f94f.jpg'
         isTyping
       /> */}
     </section>
