@@ -1,4 +1,4 @@
-import { withFormik } from "formik";
+import { withFormik } from 'formik';
 import RegisterForm from '../components/RegisterForm';
 import validateForm from '../../../utils/validateForm';
 
