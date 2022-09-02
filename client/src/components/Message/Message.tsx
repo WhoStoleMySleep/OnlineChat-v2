@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import ReadedIcon from '../ReadedIcon/ReadedIcon';
 import Time from '../Time/Time';
 import styles from './message.module.scss';
@@ -24,7 +24,27 @@ function Message(props: {
     isTyping, audio
   } = props;
   
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioElement = useRef({
+      play: () => { },
+      pause: () => { },
+      volume: ''
+  });
+
+  const togglePlay = () => {
+    setIsPlaying(prev => !prev)
+
+    if (isPlaying) {
+      audioElement.current.pause()
+    } else {
+      audioElement.current.volume = '0.35'
+      audioElement.current.play()
+    }
+  }
+
+  const handlePlay = () => {
+    
+  }
 
   return (
     <div
@@ -62,10 +82,11 @@ function Message(props: {
                 )}
                 {audio && (
                   <div className={styles['message__audio']}>
-                    <div className={styles['message__audio-progress']} style={{ width: '40%' }}></div>
+                    <audio onPlay={handlePlay} ref={audioElement} src={audio} />
+                    <div className={styles['message__audio-progress']} />
                     <div className={styles['message__audio-info']}>
                       <div className={styles['message__audio-button']}>
-                        <button>
+                        <button onClick={togglePlay}>
                           <img src={isPlaying ? pause.src : play.src} alt={isPlaying ? 'Pause' : 'Play'} />
                         </button>
                       </div>
