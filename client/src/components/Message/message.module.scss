@@ -74,7 +74,7 @@
 
   &_audio {
     audio {
-      // display: none;
+      display: none;
     }
 
     #{$self}__bubble {
@@ -128,8 +128,8 @@
         left: 0;
         top: 0;
         background-color: #418fff;
-        width: 40%;
         height: 100%;
+        transition-duration: 500ms;
       }
     }
   }

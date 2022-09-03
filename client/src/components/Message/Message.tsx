@@ -1,9 +1,8 @@
 import classNames from 'classnames';
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import ReadedIcon from '../ReadedIcon/ReadedIcon';
 import Time from '../Time/Time';
 import styles from './message.module.scss';
-
 import wave from '../../assets/images/wave.png'
 import play from '../../assets/images/play.png'
 import pause from '../../assets/images/pause.png'
@@ -25,26 +24,67 @@ function Message(props: {
   } = props;
   
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioElement = useRef({
-      play: () => { },
-      pause: () => { },
-      volume: ''
-  });
+  const [lineInterval, setLineInterval] = useState<any>();
+  const audioElement = useRef<HTMLAudioElement>(null);
 
   const togglePlay = () => {
-    setIsPlaying(prev => !prev)
-
-    if (isPlaying) {
-      audioElement.current.pause()
-    } else {
-      audioElement.current.volume = '0.35'
-      audioElement.current.play()
+    const findAll =
+      !!audioElement.current
+      && !!audioElement.current.pause
+      && !!audioElement.current.volume
+      && !!audioElement.current.play
+    
+    if (findAll) {
+      setIsPlaying(prev => !prev)
+  
+      if (isPlaying) {
+        audioElement.current.pause()
+      } else {
+        audioElement.current.volume = 0.35
+        audioElement.current?.play()
+      }
     }
   }
 
-  const handlePlay = () => {
-    
+  const onPlay = (event: any) => {
+    const duration = event.target.duration;
+
+    const interval = setInterval(() => {
+      const currentTime = event.target.currentTime;
+      const calcPercentage = (currentTime / duration) * 100
+      const progress: HTMLDivElement | null = document.querySelector(`.${styles['message__audio-progress']}`)
+      const durationElement: HTMLDivElement | null = document.querySelector(`.${styles['message__audio-duration']}`)
+
+      const time = (seconds: number) => {
+        const minute = `${Math.floor(seconds / 60)}`
+        const second = `${Math.floor(seconds - +minute * 60)}`
+
+        const minutesAndSeconds = [
+          minute.length > 1 ? minute : `0${minute}`,
+          second.length > 1 ? second : `0${second}`,
+        ]
+
+        return minutesAndSeconds.join(':')
+      }
+
+      if (progress && durationElement) {
+        progress.style.width = `${calcPercentage}%`
+        durationElement.innerHTML = `${time(currentTime)}`
+      }
+    }, 500);
+
+    setLineInterval(interval)
   }
+
+  const onPause = () => {
+    setIsPlaying(false)
+    clearInterval(lineInterval)
+  }
+
+  const onEnded = () => {
+    setIsPlaying(false)
+    clearInterval(lineInterval)
+  } 
 
   return (
     <div
@@ -82,7 +122,7 @@ function Message(props: {
                 )}
                 {audio && (
                   <div className={styles['message__audio']}>
-                    <audio onPlay={handlePlay} ref={audioElement} src={audio} />
+                    <audio ref={audioElement} onPlay={onPlay} onPause={onPause} onEnded={onEnded} src={audio} />
                     <div className={styles['message__audio-progress']} />
                     <div className={styles['message__audio-info']}>
                       <div className={styles['message__audio-button']}>
